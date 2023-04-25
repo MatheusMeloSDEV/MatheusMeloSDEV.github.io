@@ -9,31 +9,32 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent {
   title = 'TODOapp';
   arrayDeTarefas: Tarefa[] = [];
-  apiURL: string;
+  api_URL: string;
   constructor(private http: HttpClient) {
-    this.apiURL =
+    this.api_URL =
       'https://sa-east-1.aws.data.mongodb-api.com/app/data-jjwla/endpoint/data/v1';
     this.READ_tarefas();
   }
   CREATE_tarefa(descricaoNovaTarefa: string) {
     var novaTarefa = new Tarefa(descricaoNovaTarefa, false);
     this.http
-      .post<Tarefa>(`${this.apiURL}/api/post`, novaTarefa)
+      .post<Tarefa>(`${this.api_URL}/api/post`, novaTarefa)
       .subscribe((resultado) => {
         console.log(resultado);
         this.READ_tarefas();
       });
   }
   READ_tarefas() {
+      console.log(this.api_URL)
     this.http
-      .get<Tarefa[]>(`${this.apiURL}/api/getAll`)
+      .get<Tarefa[]>(`${this.api_URL}/api/getAll`)
       .subscribe((resultado) => (this.arrayDeTarefas = resultado));
   }
   DELETE_tarefa(tarefaAserRemovida: Tarefa) {
     var indice = this.arrayDeTarefas.indexOf(tarefaAserRemovida);
     var id = this.arrayDeTarefas[indice]._id;
     this.http
-      .delete<Tarefa>(`${this.apiURL}/api/delete/${id}`)
+      .delete<Tarefa>(`${this.api_URL}/api/delete/${id}`)
       .subscribe((resultado) => {
         console.log(resultado);
         this.READ_tarefas();
@@ -43,7 +44,7 @@ export class AppComponent {
     var indice = this.arrayDeTarefas.indexOf(tarefaAserModificada);
     var id = this.arrayDeTarefas[indice]._id;
     this.http
-      .patch<Tarefa>(`${this.apiURL}/api/update/${id}`, tarefaAserModificada)
+      .patch<Tarefa>(`${this.api_URL}/api/update/${id}`, tarefaAserModificada)
       .subscribe((resultado) => {
         console.log(resultado);
         this.READ_tarefas();
