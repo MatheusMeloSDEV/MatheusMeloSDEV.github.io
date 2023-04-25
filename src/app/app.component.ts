@@ -11,7 +11,7 @@ export class AppComponent {
  arrayDeTarefas: Tarefa[] = [];
  apiURL : string;
  constructor(private http: HttpClient) {
- this.apiURL = 'http://localhost:3000';
+ this.apiURL = 'https://sa-east-1.aws.data.mongodb-api.com/app/data-jjwla/endpoint/data/v1';
  this.READ_tarefas();
  }
  CREATE_tarefa(descricaoNovaTarefa: string) {
