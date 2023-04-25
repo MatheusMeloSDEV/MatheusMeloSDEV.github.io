@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "docs",
+            "outputPath": "dist/todoapp",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -96,6 +96,6 @@
     }
   },
   "cli": {
-    "analytics": "242b814f-5729-489f-9c76-2a85f12d18a6"
+    "analytics": "eaab3795-92fc-4bcc-b8ae-9cb1cd76e975"
   }
 }
